@@ -1,4 +1,5 @@
 // Theme handling
+
 const body = document.body;
 const btnTheme = document.querySelector('.fa-moon') || document.querySelector('.fa-sun');
 const btnHamburger = document.querySelector('.fa-bars');
@@ -11,9 +12,9 @@ const addThemeClass = (bodyClass, btnClass) => {
   }
 }
 
-// Get saved theme from localStorage or use defaults
-const getBodyTheme = localStorage.getItem('portfolio-theme') || 'light';
-const getBtnTheme = localStorage.getItem('portfolio-btn-theme') || 'fa-moon';
+// Change default theme to 'dark' if not already saved in localStorage
+const getBodyTheme = localStorage.getItem('portfolio-theme') || 'dark';
+const getBtnTheme = localStorage.getItem('portfolio-btn-theme') || 'fa-sun';
 addThemeClass(getBodyTheme, getBtnTheme);
 
 const isDark = () => body.classList.contains('dark');
@@ -255,8 +256,8 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="pixel-loader__ground"></div>
           <div class="pixel-loader__progress">
             <div class="pixel-loader__progress-bar"></div>
-            <div class="pixel-loader__percentage">0%</div>
           </div>
+          <div class="pixel-loader__percentage">0%</div>
           <div class="pixel-loader__text">LOADING...</div>
         </div>
       </div>
@@ -265,21 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Insert at the beginning of body
     document.body.insertAdjacentHTML('afterbegin', loaderHTML);
     loader = document.querySelector('.pixel-loader');
-  } else {
-    // Make sure existing loader has all needed elements
-    if (!loader.querySelector('.pixel-loader__progress-bar')) {
-      loader.innerHTML = `
-        <div class="pixel-loader__container">
-          <div class="pixel-loader__character"></div>
-          <div class="pixel-loader__ground"></div>
-          <div class="pixel-loader__progress">
-            <div class="pixel-loader__progress-bar"></div>
-            <div class="pixel-loader__percentage">0%</div>
-          </div>
-          <div class="pixel-loader__text">LOADING...</div>
-        </div>
-      `;
-    }
   }
   
   // Get references to elements

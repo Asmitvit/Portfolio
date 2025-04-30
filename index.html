@@ -10,10 +10,12 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/fa62c117c7.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Replace this line -->
+    <!-- <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script> -->
+    
+    <!-- With this CDN version instead -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link rel="stylesheet" href="styles.css" />
     <title>Asmit Bisht</title>
   </head>
@@ -22,29 +24,44 @@
       <h3>
         <a href="#" class="link">AB.</a>
       </h3>
+      <!-- Rest of your HTML -->
 
-  <nav class="nav center">
-    <ul class="nav__list center">
-        <li class="nav__list-item">
-            <a class="link link--nav" href="#projects">Projects</a>
-        </li>
-        <li class="nav__list-item">
-            <a class="link link--nav" href="#skills">Skills</a>
-        </li>
-        <li class="nav__list-item">
-            <a class="link link--nav" href="#education">Education</a>
-        </li>
-        <li class="nav__list-item">
-            <a class="link link--nav" href="#achievements">Achievements</a>
-        </li>
-        <li class="nav__list-item">
-            <a class="link link--nav" href="#beyond-code">Beyond Code</a>
-        </li>
-        <li class="nav__list-item">
-            <a class="link link--nav" href="#contact">Contact</a>
-        </li>
-    </ul>
-</nav>
+
+
+      <nav class="nav center">
+        <ul class="nav__list center">
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#projects">Projects</a>
+            </li>
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#skills">Skills</a>
+            </li>
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#education">Education</a>
+            </li>
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#achievements">Achievements</a>
+            </li>
+            <!-- ADD THESE THREE NEW NAV ITEMS -->
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#research">Research</a>
+            </li>
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#certifications">Certifications</a>
+            </li>
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#personal-projects">Personal Projects</a>
+            </li>
+            <!-- EXISTING ITEMS -->
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#beyond-code">Beyond Code</a>
+            </li>
+            <li class="nav__list-item">
+                <a class="link link--nav" href="#contact">Contact</a>
+            </li>
+
+        </ul>
+    </nav>
 
     </header>
 
@@ -135,32 +152,22 @@
 
         <div class="projects__grid">
           <div class="project">
-            <h3>Machine Learning Project</h3>
+            <h3>Smart Traffic Management System</h3>
             <p class="project__description">
-              Developed a machine learning model for predictive analysis 
-              using advanced data preprocessing and feature engineering techniques.
+              Developed a Smart traffic management system using reinforcement learning(Q-tables).
             </p>
             <ul class="project__stack">
               <li class="project__stack-item">Python</li>
-              <li class="project__stack-item">Machine Learning</li>
+              <li class="project__stack-item">socket-io</li>
+              <li class="project__stack-item">flask</li>
+              <li class="project__stack-item">Web-dev</li>
             </ul>
 
-            <a href="https://github.com/asmitbisht/ml-project" aria-label="source code" class="link link--icon" target="_blank">
-              
+            <a href="https://github.com/Asmitcod/SmartTraffic.git" aria-label="source code" class="link link--icon" target="_blank">
+              <i class="fab fa-github"></i>
             </a>
-          </div>
-
-          <div class="project">
-            <h3>Robotics Automation</h3>
-            <p class="project__description">
-              Created an autonomous robotic system with advanced navigation 
-              and object detection capabilities using computer vision.
-            </p>
-            <ul class="project__stack">
-              <li class="project__stack-item">Python</li>
-              <li class="project__stack-item">OpenCV</li>
-              <li class="project__stack-item">ROS</li>
-            </ul>
+                          
+            </a>
           </div>
 
           <div class="project">
@@ -168,13 +175,31 @@
             <p class="project__description">
               Designed and developed responsive web applications 
               with modern front-end technologies and interactive user interfaces.
+              For example-EduMadad is an AI-powered platform designed to assist students from remote areas in navigating and accessing educational loans.
             </p>
             <ul class="project__stack">
-              <li class="project__stack-item">HTML</li>
-              <li class="project__stack-item">CSS</li>
-              <li class="project__stack-item">JavaScript</li>
+              <li class="project__stack-item">React-js</li>
+              <li class="project__stack-item">Postgresql</li>
+              <li class="project__stack-item">Gemini-ai studio</li>
             </ul>
+            <a href="https://github.com/Asmitcod/EduMadad.git" aria-label="source code" class="link link--icon" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
           </div>
+        </div>
+        <div class="project">
+          <h3>AQI-Monitor</h3>
+          <p class="project__description">
+            Air Quality Index (AQI) Monitor using Arduino, gas sensors, and a Python script to visualize data dynamically using Matplotlib. 
+          </p>
+          <ul class="project__stack">
+            <li class="project__stack-item">Python</li>
+            <li class="project__stack-item">Arduino</li>
+            <li class="project__stack-item">MQ135</li>
+          </ul>
+          <a href="https://github.com/Asmitcod/AQI-monitor.git" aria-label="source code" class="link link--icon" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
         </div>
       </section>
 
@@ -194,6 +219,97 @@
           <li class="skills__list-item btn btn--plain">Git</li>
         </ul>
       </section>
+      <section class="section research" id="research">
+        <h2 class="section__title">Research Experience</h2>
+        <div class="research__container">
+            <div class="research__card">
+                <div class="research__icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <div class="research__content">
+                    <h3>Gamification of Fintech: Unveiling the Psychological Strategies of Fintech Apps
+                    </h3>
+                    <p class="research__period">March-2024</p>
+                    <p class="research__description">
+                      This research explores how modern fintech apps exploit psychological principles—like loss aversion, social validation, and reward systems—to influence user behavior and drive impulsive financial decisions. It investigates gamification elements such as cashback, scratch cards, and visual cues that mimic casino-like experiences to maximize user engagement. The study also examines the evolution of these techniques and provides recommendations for individual awareness and policy-level interventions to mitigate financial manipulation.
+                    </p>
+                  
+                </div>
+            </div>
+    </section>
+    
+      <!-- Technical Certifications Section
+      <section class="section certifications" id="certifications">
+          <h2 class="section__title">Technical Certifications</h2>
+          <div class="certifications__timeline">
+              <div class="certifications__item">
+                  <div class="certifications__badge">
+                      <i class="fab fa-python"></i>
+                  </div>
+                  <div class="certifications__content">
+                      <div class="certifications__date">March 2024</div>
+                      <h3>Deep Learning Specialization</h3>
+                      <p>Completed 5-course specialization by Andrew Ng on Coursera, covering neural networks, 
+                      deep learning frameworks, and practical implementations.</p>
+                      <a href="#" class="certifications__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+              </div>
+              
+              <div class="certifications__item">
+                  <div class="certifications__badge">
+                      <i class="fas fa-cloud"></i>
+                  </div>
+                  <div class="certifications__content">
+                      <div class="certifications__date">December 2023</div>
+                      <h3>AWS Certified Machine Learning – Specialty</h3>
+                      <p>Mastered AWS machine learning services and best practices for building, 
+                      training, tuning, and deploying ML models in the cloud.</p>
+                      <a href="#" class="certifications__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+              </div>
+              
+              <div class="certifications__item">
+                  <div class="certifications__badge">
+                      <i class="fas fa-code"></i>
+                  </div>
+                  <div class="certifications__content">
+                      <div class="certifications__date">October 2023</div>
+                      <h3>Full Stack Web Development</h3>
+                      <p>Completed intensive bootcamp covering modern JavaScript frameworks, 
+                      RESTful APIs, and database integration.</p>
+                      <a href="#" class="certifications__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+              </div>
+          </div>
+      </section> -->
+    
+    
+    <section class="section timeline" id="timeline">
+      <h2 class="section__title">My Journey</h2>
+      <div class="timeline__container">
+        <div class="timeline__line"></div>
+        
+        <div class="timeline__item timeline__item--left">
+          <div class="timeline__content">
+            <div class="timeline__date">2023</div>
+            <h3>Senior secondary graduation</h3>
+            <p>Graduated from St. Joseph's Convent School </p>
+            <div class="timeline__icon">
+              <i class="fas fa-school"></i>
+            </div>
+          </div>
+        </div>
+        <div class="timeline__item timeline__item--right">
+          <div class="timeline__content">
+            <div class="timeline__date">2023 - Present</div>
+            <h3>VIT Chennai</h3>
+            <p>B.Tech in Computer Science and Engineering with specialization in AI & Robotics</p>
+            <div class="timeline__icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+          </div>
+        </div>
+    </section>
 
       <!-- Contact -->
       <section class="section contact center" id="contact">
@@ -212,8 +328,8 @@
               <i class="fas fa-trophy"></i>
             </div>
             <div class="achievement__content">
-              <h3>Hackathon Winner</h3>
-              <p>Fifth Place in VIT Chennai Hackathon 2024</p>
+              <h3>Hackathon</h3>
+              <p>Got selected for GDG Devshouse Hackathon and secured a decent pos.</p>
             </div>
           </div>
 

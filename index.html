@@ -59,9 +59,6 @@
             <li class="nav__list-item">
                 <a class="link link--nav" href="#contact">Contact</a>
             </li>
-            <li class="nav__list-item">
-              <a class="link link--nav" href="#message">Message Me</a>
-          </li>
 
         </ul>
     </nav>
@@ -314,15 +311,55 @@
         </div>
     </section>
 
-      <!-- Contact -->
-      <section class="section contact center" id="contact">
-        <h2 class="section__title">Contact</h2>
-        <div class="contact__links">
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bishtasmit15@gmail.com" target="_blank">
-            <span class="btn btn--outline">Email me</span>
-          </a>
+<!-- Contact -->
+<section class="section contact center" id="contact">
+  <h2 class="section__title">Contact</h2>
+  
+  <!-- Formspree Contact Form -->
+  <div class="contact__form-container">
+    <!-- IMPORTANT: Make sure method is POST and action has the correct format -->
+    <form id="contact-form" action="https://formspree.io/f/mkgrjqqv" method="POST">
+      <!-- Name and Email in the same row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
         </div>
-      </section>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      
+      <!-- Subject and Message in the same row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+      </div>
+      
+      <div class="contact__links">
+        <!-- Don't use type="button" - use type="submit" -->
+        <button type="submit" class="btn btn--outline">Send Message</button>
+      </div>
+    </form>
+    <div id="form-status"></div>
+  </div>
+  
+  <!-- Original Email Link -->
+  <div class="contact__links">
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bishtasmit15@gmail.com" target="_blank">
+      <span class="btn btn--outline">Email me</span>
+    </a>
+  </div>
+</section>
 <section class="section achievements" id="achievements">
         <h2 class="section__title">Achievements</h2>
         <div class="achievements__grid">
@@ -368,28 +405,7 @@
         </div>
     </div>
 </section>
-<section class="section message" id="message">
-  <h2 class="section__title">Leave Me a Message</h2>
-  <div class="message__container">
-      <!-- Added action="javascript:void(0);" to prevent default form submission -->
-      <form id="messageForm" class="message__form" action="javascript:void(0);" method="POST">
-          <div class="message__form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required>
-          </div>
-          <div class="message__form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" required>
-          </div>
-          <div class="message__form-group">
-              <label for="message">Your Message</label>
-              <textarea id="messageText" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn--outline">Send Message</button>
-      </form>
-      <div id="messageStatus" class="message__status"></div>
-  </div>
-</section>
+
 
     </main>
 

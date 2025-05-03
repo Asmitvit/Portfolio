@@ -576,72 +576,6 @@ button {
     box-shadow: 0 0 0 0 rgba(var(--clr-primary-rgb), 0), 0 0 0 5px var(--clr-bg), 0 0 0 8px rgba(var(--clr-primary-rgb), 0.2);
   }
 }
-/* Message form styles */
-.message__container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.message__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-  background-color: var(--clr-bg-alt);
-  padding: 2em;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-
-.message__form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-
-.message__form-group label {
-  font-weight: 500;
-  color: var(--clr-fg-alt);
-}
-
-.message__form-group input,
-.message__form-group textarea {
-  padding: 0.8em;
-  border-radius: 4px;
-  background-color: var(--clr-bg);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: var(--clr-fg);
-  transition: border-color 0.3s ease;
-}
-
-.dark .message__form-group input,
-.dark .message__form-group textarea {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.message__form-group input:focus,
-.message__form-group textarea:focus {
-  border-color: var(--clr-primary);
-}
-
-.message__status {
-  margin-top: 1em;
-  padding: 1em;
-  border-radius: 4px;
-  text-align: center;
-  display: none;
-}
-
-.message__status.success {
-  display: block;
-  background-color: rgba(39, 174, 96, 0.1);
-  color: #27ae60;
-}
-
-.message__status.error {
-  display: block;
-  background-color: rgba(231, 76, 60, 0.1);
-  color: #e74c3c;
-}
 
 /* Dark mode adjustments */
 .dark .timeline__line {
@@ -914,16 +848,164 @@ button {
   color: var(--clr-fg-alt);
 }
 
-/* Contact section styles */
-.contact__links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
+/* Enhanced Contact Form Styling - Dark Theme */
+.contact__form-container {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #121b33; /* Darker blue background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(90, 140, 250, 0.15);
 }
 
+.contact__form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(92, 142, 255, 0.15);
+}
+
+/* Row layout for form fields */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  flex: 1;
+  text-align: left;
+  position: relative;
+}
+
+/* Make form groups stack vertically when not in a row */
+form > .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #fff; /* White text for labels */
+  letter-spacing: 0.5px;
+  font-size: 1.125rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid rgba(169, 184, 224, 0.2);
+  border-radius: 8px;
+  background-color: rgba(15, 22, 49, 0.5); /* Slightly lighter than container */
+  color: #fff; /* White text */
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #5c8eff; /* Blue focus border */
+  box-shadow: 0 0 10px rgba(92, 142, 255, 0.2);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Styled button */
+.contact__form-container .contact__links {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.contact__form-container .btn--outline,
 .contact__links .btn--outline {
-  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #5c8eff; /* Blue text */
+  background: transparent;
+  border: 2px solid #5c8eff; /* Blue border */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-size: 1rem;
+  text-transform: lowercase;
+}
+
+.contact__form-container .btn--outline:hover,
+.contact__links .btn--outline:hover {
+  transform: translateY(-3px);
+  background-color: rgba(92, 142, 255, 0.1);
+  animation: subtle-pulse 2s infinite;
+}
+
+/* Input focus effects */
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+  opacity: 0.7;
+}
+
+/* Float label animation */
+.form-group.focused label {
+  color: #5c8eff; /* Blue color when focused */
+}
+
+/* Add a subtle grid pattern to form */
+.contact__form-container {
+  background-image: 
+    linear-gradient(rgba(90, 140, 250, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 140, 250, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Pulse animation for submit button */
+@keyframes subtle-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(92, 142, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(92, 142, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(92, 142, 255, 0);
+  }
+}
+
+/* Field validation styling */
+.form-group input:invalid:focus,
+.form-group textarea:invalid:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 8px rgba(231, 76, 60, 0.2);
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0.7;
+}
+
+/* Space between form and email link */
+.contact__links {
+  margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 
 .btn {

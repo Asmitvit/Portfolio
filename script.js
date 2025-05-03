@@ -808,52 +808,55 @@ window.addEventListener('load', function() {
     }
   }, 4000);
 });
-// Message form handling
+// Contact Form Handling - Fixed Version
 document.addEventListener('DOMContentLoaded', function() {
-  const messageForm = document.getElementById('messageForm');
-  const messageStatus = document.getElementById('messageStatus');
+  const form = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
   
-  if (messageForm) {
-    console.log("Form found, adding event listener");
-    
-    messageForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      console.log("Form submitted, preventing default");
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
       
-      // Get form data
-      const formData = new FormData(messageForm);
-      const formObject = {};
-      formData.forEach((value, key) => {
-        formObject[key] = value;
-      });
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
       
-      // Send data to Flask backend
-      // Replace 'https://your-flask-api-url.com/send-message' with your actual Flask API URL
-      fetch('https://your-flask-api-url.com/send-message', {
-        method: 'POST',
+      const formData = new FormData(form);
+      
+      // Using fetch with correct options
+      fetch(form.action, {
+        method: 'POST', // Explicitly set method to POST
+        body: formData,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formObject)
+          'Accept': 'application/json'
+        }
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          messageStatus.textContent = 'Message sent successfully! I will get back to you soon.';
-          messageStatus.className = 'message__status success';
-          messageForm.reset();
+      .then(response => {
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+        
+        if (response.ok) {
+          formStatus.className = 'status-success';
+          formStatus.textContent = "Thanks for your message! I'll get back to you soon.";
+          form.reset();
         } else {
-          messageStatus.textContent = data.error || 'Something went wrong. Please try again.';
-          messageStatus.className = 'message__status error';
+          response.json().then(data => {
+            formStatus.className = 'status-error';
+            formStatus.textContent = data.error || "Oops! There was a problem sending your message.";
+          })
+          .catch(error => {
+            formStatus.className = 'status-error';
+            formStatus.textContent = "There was a problem with the server response.";
+          });
         }
       })
       .catch(error => {
-        console.error('Error:', error);
-        messageStatus.textContent = 'Connection error. Please try again later.';
-        messageStatus.className = 'message__status error';
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+        formStatus.className = 'status-error';
+        formStatus.textContent = "Network error. Please check your connection and try again.";
       });
     });
-  } else {
-    console.error("Message form not found!");
   }
 });

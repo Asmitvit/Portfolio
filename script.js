@@ -808,3 +808,52 @@ window.addEventListener('load', function() {
     }
   }, 4000);
 });
+// Message form handling
+document.addEventListener('DOMContentLoaded', function() {
+  const messageForm = document.getElementById('messageForm');
+  const messageStatus = document.getElementById('messageStatus');
+  
+  if (messageForm) {
+    console.log("Form found, adding event listener");
+    
+    messageForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      console.log("Form submitted, preventing default");
+      
+      // Get form data
+      const formData = new FormData(messageForm);
+      const formObject = {};
+      formData.forEach((value, key) => {
+        formObject[key] = value;
+      });
+      
+      // Send data to Flask backend
+      // Replace 'https://your-flask-api-url.com/send-message' with your actual Flask API URL
+      fetch('https://your-flask-api-url.com/send-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formObject)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          messageStatus.textContent = 'Message sent successfully! I will get back to you soon.';
+          messageStatus.className = 'message__status success';
+          messageForm.reset();
+        } else {
+          messageStatus.textContent = data.error || 'Something went wrong. Please try again.';
+          messageStatus.className = 'message__status error';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        messageStatus.textContent = 'Connection error. Please try again later.';
+        messageStatus.className = 'message__status error';
+      });
+    });
+  } else {
+    console.error("Message form not found!");
+  }
+});
